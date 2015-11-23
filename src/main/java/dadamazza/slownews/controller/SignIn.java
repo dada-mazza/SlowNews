@@ -14,6 +14,8 @@ import java.util.Map;
 @WebServlet("/signIn")
 public class SignIn extends HttpServlet {
 
+    private final String signInJsp = "/WEB-INF/view/signIn.jsp";
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,7 +31,7 @@ public class SignIn extends HttpServlet {
         String password = request.getParameter("password");
 
         if (login == null || login.isEmpty()) {
-            request.getRequestDispatcher("jsp/signIn.jsp").forward(request, response);
+            request.getRequestDispatcher(signInJsp).forward(request, response);
         }
 
         if (users.containsKey(login)
@@ -39,7 +41,7 @@ public class SignIn extends HttpServlet {
             request.getRequestDispatcher("news").forward(request, response);
         } else {
             request.setAttribute("message", "incorrect login or password");
-            request.getRequestDispatcher("jsp/signIn.jsp").forward(request, response);
+            request.getRequestDispatcher(signInJsp).forward(request, response);
         }
     }
 
@@ -47,7 +49,7 @@ public class SignIn extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getSession().getAttribute("user") == null) {
-            request.getRequestDispatcher("jsp/signIn.jsp").forward(request, response);
+            request.getRequestDispatcher(signInJsp).forward(request, response);
         } else {
             request.getRequestDispatcher("/").forward(request, response);
         }

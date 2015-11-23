@@ -20,7 +20,7 @@ public class Archive extends HttpServlet {
             request.getRequestDispatcher("/").forward(request, response);
         } else {
             request.setAttribute("articles", NewsSingletone.getInstance().getArticles());
-            request.getRequestDispatcher("jsp/archive.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/archive.jsp").forward(request, response);
         }
     }
 }

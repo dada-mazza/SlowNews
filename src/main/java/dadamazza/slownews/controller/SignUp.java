@@ -14,6 +14,8 @@ import java.util.Map;
 @WebServlet("/signUp")
 public class SignUp extends HttpServlet {
 
+    private final String signUpJsp = "/WEB-INF/view/signUp.jsp";
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,10 +35,10 @@ public class SignUp extends HttpServlet {
 
         if (!users.containsKey(user.getLogin())) {
             users.put(user.getLogin(), user);
-            request.getRequestDispatcher("jsp/signIn.jsp").forward(request, response);
+            request.getRequestDispatcher(signUpJsp).forward(request, response);
         } else {
             request.setAttribute("message", "user with that name already registered");
-            request.getRequestDispatcher("jsp/signUp.jsp").forward(request, response);
+            request.getRequestDispatcher(signUpJsp).forward(request, response);
         }
     }
 
@@ -45,7 +47,7 @@ public class SignUp extends HttpServlet {
             throws ServletException, IOException {
 
         if (request.getSession().getAttribute("user") == null) {
-            request.getRequestDispatcher("jsp/signUp.jsp").forward(request, response);
+            request.getRequestDispatcher(signUpJsp).forward(request, response);
         } else {
             request.getRequestDispatcher("/").forward(request, response);
         }
