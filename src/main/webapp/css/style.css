@@ -1,0 +1,24 @@
+body {
+    margin: 0px;
+    background: url(../img/bg.png) repeat;
+}
+
+a {
+    color: #00a1d2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    width: 70%;
+    background: #F0F0F0;
+    border: 1px solid #CCC;
+    height: auto;
+    margin: 70px auto;
+}
+
+
+
