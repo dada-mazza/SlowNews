@@ -2,8 +2,8 @@
 <%@ include file="header.jsp" %>
 <html>
 <head>
-    <link href="../css/news.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/archive.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/news.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/archive.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div class="content">

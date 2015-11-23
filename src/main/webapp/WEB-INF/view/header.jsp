@@ -3,10 +3,10 @@
 <html>
 <head>
     <title>SlowNews</title>
-    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/header.css" rel="stylesheet" type="text/css"/>
-    <script src="../js/signOut.js" type="text/javascript"></script>
-    <link rel="icon" href="../img/favicon-spider.ico" type="image/x-icon">
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/header.css" rel="stylesheet" type="text/css"/>
+    <script src="/js/signOut.js" type="text/javascript"></script>
+    <link rel="icon" href="/img/favicon-spider.ico" type="image/x-icon">
 </head>
 <body>
 

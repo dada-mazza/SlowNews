@@ -1,4 +1,5 @@
 .idea
 .sonar
-out
+.sonar_lock
+target
 *.iml

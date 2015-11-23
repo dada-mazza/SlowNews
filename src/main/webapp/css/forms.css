@@ -11,11 +11,11 @@
 }
 
 #inputsIn input {
-    background: #f1f1f1 url(../img/login-signIn.png) no-repeat;
+    background: #f1f1f1 url(/img/login-signIn.png) no-repeat;
 }
 
 #inputsUp input {
-    background: #f1f1f1 url(../img/login-signUp.png) no-repeat;
+    background: #f1f1f1 url(/img/login-signUp.png) no-repeat;
 }
 
 #inputsIn input,
@@ -137,5 +137,5 @@
     background-position: 10px center;
     color: #D8000C;
     background-color: #FFBABA;
-    background-image: url(../img/error.png);
+    background-image: url(/img/error.png);
 }

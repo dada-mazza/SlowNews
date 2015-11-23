@@ -4,8 +4,8 @@
 <%@ include file="header.jsp" %>
 <html>
 <head>
-    <link href="../css/forms.css" rel="stylesheet" type="text/css"/>
-    <script src="../js/signIn.js" type="text/javascript"></script>
+    <link href="/css/forms.css" rel="stylesheet" type="text/css"/>
+    <script src="/js/signIn.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="content">
