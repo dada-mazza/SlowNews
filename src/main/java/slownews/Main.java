@@ -1,6 +1,6 @@
-package dadamazza.slownews;
+package slownews;
 
-import dadamazza.slownews.model.User;
+import slownews.model.User;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,11 +15,11 @@ import java.util.Map;
 @WebServlet("/")
 public class Main extends HttpServlet {
 
-    Map<String, User> users;
+    private Map<String, User> users;
 
     @Override
     public void init() {
-        users = new HashMap<String, User>();
+        users = new HashMap<>();
         User user = new User();
         user.setLogin("qqq");
         user.setPassword("qqq");

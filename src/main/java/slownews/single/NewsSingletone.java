@@ -1,6 +1,6 @@
-package dadamazza.slownews.single;
+package slownews.single;
 
-import dadamazza.slownews.model.Article;
+import slownews.model.Article;
 
 import java.util.ArrayList;
 import java.util.List;

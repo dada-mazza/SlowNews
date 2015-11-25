@@ -1,6 +1,6 @@
-package dadamazza.slownews.controller;
+package slownews.controller;
 
-import dadamazza.slownews.model.User;
+import slownews.model.User;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package dadamazza.slownews.model;
+package slownews.model;
 
 public class Article {
 

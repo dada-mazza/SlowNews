@@ -1,0 +1,19 @@
+.weather{
+    height: 200px;
+    width: 350px;
+    padding: 30px;
+    z-index: 0;
+
+    text-align: center;
+    margin: auto;
+}
+
+
+td {
+    color: #669;
+    border-top: 1px solid #e8edff;
+    padding: 5px 15px;
+}
+tr:nth-child(2n) {
+    background: #CCCCCC;
+}

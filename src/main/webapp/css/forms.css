@@ -10,6 +10,15 @@
     transform: translate(-50%, -50%)
 }
 
+#formWeather {
+    height: 30px;
+    width: 500px;
+    padding: 20px 0px 0px 0px;
+    z-index: 0;
+
+    margin: auto;
+}
+
 #inputsIn input {
     background: #f1f1f1 url(/img/login-signIn.png) no-repeat;
 }
@@ -18,8 +27,15 @@
     background: #f1f1f1 url(/img/login-signUp.png) no-repeat;
 }
 
+#inputsWeather,
+#actionsWeather {
+    float: left;
+    margin-left: 15px;
+}
+
 #inputsIn input,
-#inputsUp input {
+#inputsUp input,
+#inputsWeather input{
     padding: 15px 15px 15px 30px;
     margin: 0 0 10px 0;
     width: 350px;
@@ -50,7 +66,8 @@
 }
 
 #inputsIn input:focus,
-#inputsUp input:focus {
+#inputsUp input:focus,
+#inputsWeather input:focus{
     background-color: #fff;
     border-color: #e8c291;
     outline: none;

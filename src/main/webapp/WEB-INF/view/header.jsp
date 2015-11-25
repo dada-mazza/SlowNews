@@ -6,6 +6,7 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css"/>
     <link href="/css/header.css" rel="stylesheet" type="text/css"/>
     <script src="/js/signOut.js" type="text/javascript"></script>
+    <script src="/js/counterNews.js" type="text/javascript"></script>
     <link rel="icon" href="/img/favicon-spider.ico" type="image/x-icon">
 </head>
 <body>
@@ -28,11 +29,28 @@
             </div>
 
             <div class="menu">
+                Непрочитано новин:
+                <span id="counter">
+                    <c:choose>
+                        <c:when test="${counterNews == null}">
+                            0
+                        </c:when>
+                        <c:otherwise>
+                            ${counterNews}
+                        </c:otherwise>
+                    </c:choose>
+                </span>
+            </div>
+
+            <script>start()</script>
+
+            <div class="menu">
                 <a href="archive">Archive</a>
             </div>
             <div class="menu">
                 <a href="news">News</a>
             </div>
+
 
         </c:if>
 
@@ -46,6 +64,10 @@
             </div>
 
         </c:if>
+
+        <div class="menu">
+            <a href="weather">Weather</a>
+        </div>
 
     </div>
 </div>

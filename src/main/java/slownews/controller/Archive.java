@@ -1,6 +1,6 @@
-package dadamazza.slownews.controller;
+package slownews.controller;
 
-import dadamazza.slownews.single.NewsSingletone;
+import slownews.single.NewsSingletone;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
