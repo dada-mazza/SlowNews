@@ -148,7 +148,11 @@
 .error {
     width: 50%;
     border: 1px solid;
-    margin: 10px auto;
+    border-radius: 3px;
+
+    box-shadow: 1px 1px 3px #999999;
+
+    margin: 30px auto;
     padding: 15px 10px 15px 50px;
     background-repeat: no-repeat;
     background-position: 10px center;

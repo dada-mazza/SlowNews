@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -18,60 +19,84 @@
         </div>
     </form>
 
-    <div class="weather">
-        <h1>Weather in your city</h1>
 
-        <h2>${city}, ${country}</h2>
+    <c:choose>
+        <c:when test="${message == null}">
+        </c:when>
+        <c:otherwise>
+            <div class="error">
+                    ${message}
+            </div>
+        </c:otherwise>
+    </c:choose>
 
-        <table align="center">
-            <tr>
-                <td valign="left"><img src=${image}></td>
-                <td valign="center">${temperature}</td>
-            </tr>
-        </table>
+    <c:choose>
+        <c:when test="${weatherCode}">
 
-        <h3>${weatherMain}</h3>
+            <div class="weather">
+                <h1>Weather in your city</h1>
 
-        <div> get ${getWeather}</div>
-        <br>
-        <table id="tableWeather" align="center">
+                <h2>${city}, ${country}</h2>
 
-            <tr>
-                <td>Wind</td>
-                <td>${wind}</td>
-            </tr>
+                <table align="center">
+                    <tr>
+                        <td valign="left"><img src=${image}></td>
+                        <td valign="center">${temperature}</td>
+                    </tr>
+                </table>
 
-            <tr>
-                <td>Cloudiness</td>
-                <td>${cloudiness}</td>
-            </tr>
+                <h3>${weatherMain}</h3>
 
-            <tr>
-                <td>Pressure<br></td>
-                <td>${pressure}</td>
-            </tr>
+                <div> get ${getWeather}</div>
+                <br>
+                <table id="tableWeather" align="center">
+                    <tr></tr>
+                    <tr>
+                        <td>Wind</td>
+                        <td>${wind}</td>
+                    </tr>
 
-            <tr>
-                <td>Humidity</td>
-                <td>${humidity}</td>
-            </tr>
+                    <tr>
+                        <td>Cloudiness</td>
+                        <td>${cloudiness}</td>
+                    </tr>
 
-            <tr>
-                <td>Sunrise</td>
-                <td> ${sunrise}</td>
-            </tr>
-            <tr>
-                <td>Sunset</td>
-                <td>${sunset}</td>
-            </tr>
-            <tr>
-                <td>Geo coords</td>
-                <td>${coord}</td>
-            </tr>
+                    <tr>
+                        <td>Pressure<br></td>
+                        <td>${pressure}</td>
+                    </tr>
 
-        </table>
+                    <tr>
+                        <td>Humidity</td>
+                        <td>${humidity}</td>
+                    </tr>
 
-    </div>
+                    <tr>
+                        <td>Sunrise</td>
+                        <td> ${sunrise}</td>
+                    </tr>
+                    <tr>
+                        <td>Sunset</td>
+                        <td>${sunset}</td>
+                    </tr>
+                    <tr>
+                        <td>Geo coords</td>
+                        <td>${coord}</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </c:when>
+
+        <c:otherwise>
+            <div class="error">
+                    ${errorCity}
+            </div>
+        </c:otherwise>
+    </c:choose>
+
 </div>
 
 </body>

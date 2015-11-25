@@ -51,7 +51,10 @@ public class Weather extends HttpServlet {
 
         System.out.println(node);
 
+
         if (node.get("cod").toString().equals("200")) {
+
+            request.setAttribute("weatherCode", true);
 
             String nameCity = nodeToString(node.get("name"));
             request.setAttribute("city", nameCity);
@@ -99,8 +102,9 @@ public class Weather extends HttpServlet {
                     .append("]")
                     .toString();
             request.setAttribute("coord", coord);
-
-
+        } else {
+            request.setAttribute("weatherCode", false);
+            request.setAttribute("errorCity", "City not found");
         }
 
         request.getRequestDispatcher("/WEB-INF/view/weather.jsp").forward(request, response);
