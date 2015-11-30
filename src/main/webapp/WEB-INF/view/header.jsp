@@ -18,8 +18,6 @@
             <a href="">SlowNews</a>
         </div>
 
-        <%-- <% request.setAttribute("user", request.getSession().getAttribute("user")); %> --%>
-
         <c:if test="${user != null}">
 
             <div class="user">
@@ -50,7 +48,6 @@
             <div class="menu">
                 <a href="news">News</a>
             </div>
-
 
         </c:if>
 

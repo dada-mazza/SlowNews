@@ -20,13 +20,6 @@ import java.util.TimeZone;
 @WebServlet("/weather")
 public class Weather extends HttpServlet {
 
-   /* @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        request.getRequestDispatcher("/WEB-INF/view/weather.jsp").forward(request, response);
-    }*/
-
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -11,14 +11,19 @@
     <c:forEach var="article" items="${articles}">
     <div class="news_block">
         <h1>${article.title}</h1>
-        <img src=${article.image}>
 
-        <p class="p-first">${article.firstParagraph}</p>
+     <c:choose>
+            <c:when test="${article.media == null}">
+                <img src="/img/news/BBC_news_tech_300x300.jpeg">
+            </c:when>
+            <c:otherwise>
+                <img src=${article.media}>
+            </c:otherwise>
+        </c:choose>
 
-        <p>${article.body}</p>
-        <br/>
+        <p class="news_description">${article.description}</p>
 
-        <a href="">...</a>
+        <p><a href=${article.link}>read</a></p>
 
         <form id="form" method="post" action="archive">
             <input id="submit" type="submit" value="Archive">
