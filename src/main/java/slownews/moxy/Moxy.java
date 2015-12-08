@@ -1,5 +1,7 @@
 package slownews.moxy;
 
+import org.eclipse.persistence.jaxb.JAXBContextFactory;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -11,13 +13,12 @@ public class Moxy {
     public List<NewsItem> getNewsItems(URL url) {
         RSS rss = null;
         try {
-            JAXBContext context = JAXBContext.newInstance(RSS.class);
+            JAXBContext context = JAXBContextFactory.createContext(new Class[]{RSS.class}, null);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             rss = (RSS) unmarshaller.unmarshal(url);
-            System.out.println(rss);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-        return rss.getChannel().getItem();
+        return rss.getNewsItems();
     }
 }

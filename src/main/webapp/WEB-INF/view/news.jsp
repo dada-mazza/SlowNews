@@ -14,10 +14,10 @@
 
      <c:choose>
             <c:when test="${article.media == null}">
-                <img src="/img/news/BBC_news_tech_300x300.jpeg">
+                <img src="/img/news/bbc_news_tech_144x81.jpg">
             </c:when>
             <c:otherwise>
-                <img src=${article.media}>
+                <img src=${article.media[1]}>
             </c:otherwise>
         </c:choose>
 

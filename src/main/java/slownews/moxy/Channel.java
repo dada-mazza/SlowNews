@@ -1,9 +1,11 @@
 package slownews.moxy;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 public class Channel {
 
+    @XmlElement
     private List<NewsItem> items;
 
     public List<NewsItem> getItem() {

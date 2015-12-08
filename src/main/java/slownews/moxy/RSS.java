@@ -1,27 +1,24 @@
 package slownews.moxy;
 
+import org.eclipse.persistence.oxm.annotations.XmlPath;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import java.util.List;
 
 @XmlRootElement(name = "rss")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"channel"})
 public class RSS {
 
-    private Channel channel;
+    @XmlPath("channel/item")
+    private List<NewsItem> newsItems;
 
-    public Channel getChannel() {
-        return channel;
+    public List<NewsItem> getNewsItems() {
+        return newsItems;
     }
 
-    public void setChannel(Channel channel) {
-        this.channel = channel;
-    }
-
-    @Override
-    public String toString() {
-        return channel.getItem().toString();
+    public void setNewsItems(List<NewsItem> newsItems) {
+        this.newsItems = newsItems;
     }
 }
