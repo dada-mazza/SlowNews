@@ -1,8 +1,0 @@
-.idea
-.sonar
-garbage
-.sonar_lock
-target
-*.iml
-src/main/java/slownews/test
-log
