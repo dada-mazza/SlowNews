@@ -1,5 +1,6 @@
 .idea
 .sonar
+garbage
 .sonar_lock
 target
 *.iml

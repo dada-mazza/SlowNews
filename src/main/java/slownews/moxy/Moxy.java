@@ -21,4 +21,8 @@ public class Moxy {
         }
         return rss.getNewsItems();
     }
+
+    public String getLastNewsTitle(URL url) {
+        return getNewsItems(url).get(0).getTitle();
+    }
 }

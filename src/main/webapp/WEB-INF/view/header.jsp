@@ -7,6 +7,7 @@
     <link href="/css/header.css" rel="stylesheet" type="text/css"/>
     <script src="/js/signOut.js" type="text/javascript"></script>
     <script src="/js/counterNews.js" type="text/javascript"></script>
+    <script src="/js/lastNewsTitle.js" type="text/javascript"></script>
     <link rel="icon" href="/img/favicon-spider.ico" type="image/x-icon">
 </head>
 <body>
@@ -27,8 +28,15 @@
             </div>
 
             <div class="menu">
+
+                <span id="lastNews"></span>
+            </div>
+
+            <script>getLastNewsTitle()</script>
+
+            <div class="menu">
                 Непрочитано новин:
-                <span id="counter">
+                <span id="counter" class="indicator">
                     <c:choose>
                         <c:when test="${counterNews == null}">
                             0
@@ -40,7 +48,7 @@
                 </span>
             </div>
 
-            <script>start()</script>
+            <script>startCounterNews()</script>
 
             <div class="menu">
                 <a href="archive">Archive</a>

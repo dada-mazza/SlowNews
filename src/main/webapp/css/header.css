@@ -50,9 +50,9 @@
     box-shadow: 1px 1px 3px #999999;
 }
 
-#counter{
+.indicator {
     color: #0033CC;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 
