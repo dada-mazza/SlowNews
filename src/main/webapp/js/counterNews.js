@@ -5,10 +5,9 @@ function counterNews() {
     var num = parseInt(counter.innerText);
     num = num + parseInt(Math.random() * (max - min) + min);
     counter.innerHTML = num;
-
 }
 
-function start() {
+function startCounterNews() {
     var min = 1000;
     var max = 10000;
     var timeout = parseInt(Math.random() * (max - min) + min)
