@@ -9,6 +9,12 @@
     <script src="/js/counterNews.js" type="text/javascript"></script>
     <script src="/js/lastNewsTitle.js" type="text/javascript"></script>
     <link rel="icon" href="/img/favicon-spider.ico" type="image/x-icon">
+
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    </script>
+
+
 </head>
 <body>
 
@@ -28,11 +34,10 @@
             </div>
 
             <div class="menu">
-
                 <span id="lastNews"></span>
             </div>
 
-            <script>getLastNewsTitle()</script>
+            <script>getLastNewsTitleViaJQuery()</script>
 
             <div class="menu">
                 Непрочитано новин:
