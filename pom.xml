@@ -23,6 +23,9 @@
         <jackson.version>2.5.3</jackson.version>
         <moxy.version>2.6.1</moxy.version>
 
+        <hibernate.version>5.0.3.Final</hibernate.version>
+        <postgresql.version>9.4-1206-jdbc41</postgresql.version>
+
     </properties>
 
 
@@ -74,6 +77,18 @@
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.moxy</artifactId>
             <version>${moxy.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
 
     </dependencies>

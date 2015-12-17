@@ -26,6 +26,5 @@ public class LastNews extends HttpServlet {
         URL url = new URL("http://feeds.bbci.co.uk/news/technology/rss.xml");
         response.getWriter().print(new Moxy().getLastNewsTitle(url));
         logger.info(new Moxy().getLastNewsTitle(url) + " " + new Date());
-
     }
 }
