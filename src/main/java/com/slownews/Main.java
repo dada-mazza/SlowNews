@@ -1,6 +1,6 @@
-package slownews;
+package com.slownews;
 
-import slownews.model.User;
+import com.slownews.model.User;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -36,7 +36,7 @@ public class Main extends HttpServlet {
         if (request.getSession().getAttribute("user") == null) {
             request.getRequestDispatcher("signIn").forward(request, response);
         } else {
-            request.getRequestDispatcher("news").forward(request, response);
+            request.getRequestDispatcher("news.xml").forward(request, response);
         }
     }
 }

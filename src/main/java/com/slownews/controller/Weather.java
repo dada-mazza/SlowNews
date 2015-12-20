@@ -1,8 +1,7 @@
-package slownews.controller;
+package com.slownews.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import slownews.single.NewsSingletone;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,9 +12,6 @@ import javax.ws.rs.client.ClientBuilder;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
-import java.util.Random;
-import java.util.TimeZone;
 
 @WebServlet("/weather")
 public class Weather extends HttpServlet {

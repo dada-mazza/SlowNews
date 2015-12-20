@@ -1,4 +1,4 @@
-package slownews.moxy;
+package com.slownews.moxy;
 
 import org.eclipse.persistence.oxm.annotations.XmlPath;
 

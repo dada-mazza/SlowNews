@@ -1,4 +1,4 @@
-package slownews.controller;
+package com.slownews.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

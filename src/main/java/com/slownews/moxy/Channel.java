@@ -1,4 +1,4 @@
-package slownews.moxy;
+package com.slownews.moxy;
 
 import javax.xml.bind.annotation.XmlElement;
 import java.util.List;

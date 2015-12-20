@@ -1,6 +1,6 @@
-package slownews.controller;
+package com.slownews.controller;
 
-import slownews.single.NewsSingletone;
+import com.slownews.single.NewsSingletone;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +19,7 @@ public class Archive extends HttpServlet {
         if (request.getSession().getAttribute("user") == null) {
             request.getRequestDispatcher("/").forward(request, response);
         } else {
-            request.setAttribute("articles", NewsSingletone.getInstance().getArticles());
+            request.setAttribute("articles", NewsSingletone.getInstance().getArchiveNewses());
             request.getRequestDispatcher("/WEB-INF/view/archive.jsp").forward(request, response);
         }
     }

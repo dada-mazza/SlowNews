@@ -1,6 +1,6 @@
-package slownews.controller;
+package com.slownews.controller;
 
-import slownews.model.User;
+import com.slownews.model.User;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,20 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-@WebServlet("/signUp")
-public class SignUp extends HttpServlet {
+@WebServlet("/signIn")
+public class SignIn extends HttpServlet {
 
-    private final String signUpJsp = "/WEB-INF/view/signUp.jsp";
+    private final String signInJsp = "/WEB-INF/view/signIn.jsp";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        User user = new User();
-        user.setLogin(request.getParameter("login"));
-        user.setPassword(request.getParameter("password"));
-        user.setEmail(request.getParameter("email"));
-        user.setNumber(request.getParameter("number"));
 
         Map<String, User> users = null;
         ServletContext context = request.getSession().getServletContext();
@@ -33,21 +27,29 @@ public class SignUp extends HttpServlet {
             users = (Map) obj;
         }
 
-        if (!users.containsKey(user.getLogin())) {
-            users.put(user.getLogin(), user);
-            request.getRequestDispatcher(signUpJsp).forward(request, response);
+        String login = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        if (login == null || login.isEmpty()) {
+            request.getRequestDispatcher(signInJsp).forward(request, response);
+        }
+
+        if (users.containsKey(login)
+                && users.get(login).getPassword().equals(password)) {
+            request.getSession().setAttribute("user", login);
+            request.setAttribute("user", login);
+            request.getRequestDispatcher("news.xml").forward(request, response);
         } else {
-            request.setAttribute("message", "user with that name already registered");
-            request.getRequestDispatcher(signUpJsp).forward(request, response);
+            request.setAttribute("message", "incorrect login or password");
+            request.getRequestDispatcher(signInJsp).forward(request, response);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         if (request.getSession().getAttribute("user") == null) {
-            request.getRequestDispatcher(signUpJsp).forward(request, response);
+            request.getRequestDispatcher(signInJsp).forward(request, response);
         } else {
             request.getRequestDispatcher("/").forward(request, response);
         }

@@ -1,6 +1,6 @@
-package slownews.controller;
+package com.slownews.controller;
 
-import slownews.moxy.Moxy;
+import com.slownews.moxy.Moxy;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 
-@WebServlet("/news")
+@WebServlet("/news.xml")
 public class News extends HttpServlet {
 
     @Override
@@ -22,9 +22,9 @@ public class News extends HttpServlet {
             request.getRequestDispatcher("/").forward(request, response);
         } else {
             request.setAttribute("counterNews", new Random().nextInt(11));
-            URL url = new URL("http://feeds.bbci.co.uk/news/technology/rss.xml");
+            URL url = new URL("http://feeds.bbci.co.uk/news.xml/technology/rss.xml");
             request.setAttribute("articles", new Moxy().getNewsItems(url));
-            request.getRequestDispatcher("/WEB-INF/view/news.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/news.xml.jsp").forward(request, response);
         }
     }
 }

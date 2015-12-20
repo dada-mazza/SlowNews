@@ -1,9 +1,10 @@
 
-package slownews.moxy;
+package com.slownews.moxy;
 
 import org.eclipse.persistence.oxm.annotations.XmlPath;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 
 public class NewsItem {
