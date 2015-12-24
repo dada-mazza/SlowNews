@@ -1,21 +1,24 @@
-package com.slownews.model;
+package com.slownews.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+@NamedQuery(name = "UserEntity.getAll", query = "select users from UserEntity users")
+public class UserEntity implements SlowNewsEntity {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "sequence", sequenceName = "user_sequence", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Column(name = "id")
     private Long Id;
 
-    @Column(name = "login")
+    @Column(name = "login", unique = true, nullable = false)
     private String login;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "email")
@@ -29,6 +32,13 @@ public class User {
 
     @Column(name = "dateRegistration")
     private Date dateRegistration;
+
+    @Column
+    @ManyToMany
+    private Set<ArchiveNewsEntity> archiveNewsEntities;
+
+    public UserEntity() {
+    }
 
     public Long getId() {
         return Id;
@@ -84,5 +94,27 @@ public class User {
 
     public void setDateRegistration(Date dateRegistration) {
         this.dateRegistration = dateRegistration;
+    }
+
+    public Set<ArchiveNewsEntity> getArchiveNewsEntities() {
+        return archiveNewsEntities;
+    }
+
+    public void setArchiveNewsEntities(Set<ArchiveNewsEntity> archiveNewsEntities) {
+        this.archiveNewsEntities = archiveNewsEntities;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "Id=" + Id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", role='" + role + '\'' +
+                ", dateRegistration=" + dateRegistration +
+                ", archiveNewsEntities=" + archiveNewsEntities +
+                '}' + "\n";
     }
 }
