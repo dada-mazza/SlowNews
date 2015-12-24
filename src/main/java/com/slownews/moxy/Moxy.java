@@ -1,5 +1,6 @@
 package com.slownews.moxy;
 
+import com.slownews.moxy.model.NewsItem;
 import org.eclipse.persistence.jaxb.JAXBContextFactory;
 
 import javax.xml.bind.JAXBContext;
@@ -34,8 +35,6 @@ public class Moxy {
         }
         return rss.getNewsItems();
     }
-
-
 
     public String getLastNewsTitle(URL url) {
         return getNewsItems(url).get(0).getTitle();

@@ -1,5 +1,6 @@
 package com.slownews.moxy;
 
+import com.slownews.moxy.model.NewsItem;
 import org.eclipse.persistence.oxm.annotations.XmlPath;
 
 import javax.xml.bind.annotation.XmlAccessType;
