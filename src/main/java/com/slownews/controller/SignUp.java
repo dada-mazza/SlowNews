@@ -1,43 +1,49 @@
 package com.slownews.controller;
 
-import com.slownews.model.User;
+import com.slownews.controller.auth.AuthorizationService;
+import com.slownews.controller.auth.AuthorizationServiceImpl;
+import com.slownews.controller.auth.exception.AuthorizationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
 @WebServlet("/signUp")
 public class SignUp extends HttpServlet {
 
+    private static Logger logger = LoggerFactory.getLogger(SignUp.class);
+
     private final String signUpJsp = "/WEB-INF/view/signUp.jsp";
+    private final String signInJsp = "/WEB-INF/view/signIn.jsp";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        User user = new User();
-      /*  user.setLogin(request.getParameter("login"));
-        user.setPassword(request.getParameter("password"));
-        user.setEmail(request.getParameter("email"));
-        user.setNumber(request.getParameter("number"));*/
+        logger.info("doPost");
 
-        Map<String, User> users = null;
-        ServletContext context = request.getSession().getServletContext();
-        Object obj = context.getAttribute("users");
-        if (obj instanceof Map) {
-            users = (Map) obj;
-        }
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+        String passwordConfirm = request.getParameter("passwordConfirm");
+        String email = request.getParameter("email");
 
-        if (!users.containsKey(user.getLogin())) {
-            users.put(user.getLogin(), user);
-            request.getRequestDispatcher(signUpJsp).forward(request, response);
-        } else {
-            request.setAttribute("message", "user with that name already registered");
+        try {
+            AuthorizationService service = new AuthorizationServiceImpl();
+            service.register(login, email, password, passwordConfirm);
+            service.closeService();
+            request.setAttribute("login", login);
+            logger.info("doPost forward to signIn");
+            request.getRequestDispatcher("signIn").forward(request, response);
+        } catch (AuthorizationException e) {
+            request.setAttribute("message", e.toString());
+            request.setAttribute("login", login);
+            request.setAttribute("email", email);
+            logger.info("doPost forward to " + signUpJsp);
             request.getRequestDispatcher(signUpJsp).forward(request, response);
         }
     }
@@ -46,10 +52,15 @@ public class SignUp extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        logger.info("doGet");
+
         if (request.getSession().getAttribute("user") == null) {
+            logger.info("doGet forward to " + signUpJsp);
             request.getRequestDispatcher(signUpJsp).forward(request, response);
         } else {
+            logger.info("doGet forward to /");
             request.getRequestDispatcher("/").forward(request, response);
         }
     }
+
 }

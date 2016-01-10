@@ -1,4 +1,3 @@
-<%@ page import="java.io.File" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp" %>
@@ -20,10 +19,10 @@
         </c:otherwise>
     </c:choose>
 
-    <form id="form" method="post" action="signIn" onsubmit="return check('login', 'passwordIn')">
+    <form id="form" method="post" action="signIn" onsubmit="return check()">
         <div id="inputsIn">
-            <input id="login" name="username" type="text" placeholder="login" autofocus <%--required--%>>
-            <input id="passwordIn" name="password" type="password" placeholder="password" <%--required--%>>
+            <input id="login" name="login" type="text" placeholder="login" autofocus value="${login}">
+            <input id="password" name="password" type="password" placeholder="password" <%--required--%>>
         </div>
         <div id="actions">
             <input id="submit" type="submit" value="Sign In">

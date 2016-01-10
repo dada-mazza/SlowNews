@@ -1,5 +1,5 @@
 function getLastNewsTitle() {
-    var timeout = 5000;
+    var timeout = 60000;
     setInterval(
         function lastNewsTitle() {
             var span = document.getElementById("lastNews");
@@ -21,7 +21,7 @@ function getLastNewsTitle() {
 }
 
 function getLastNewsTitleViaJQuery() {
-    var timeout = 5000;
+    var timeout = 60000;
     setInterval(
         function () {
             // $("#lastNews").load("/lastNews");

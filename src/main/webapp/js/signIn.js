@@ -1,6 +1,6 @@
-function check(login, password) {
-    var login = document.getElementById(login).value;
-    var password = document.getElementById(password).value;
+function check() {
+    var login = document.getElementById("login").value;
+    var password = document.getElementById("password").value;
     var message = '';
 
     if ((login == null) || (login == '') || (login == undefined)) {

@@ -19,12 +19,12 @@
         </c:otherwise>
     </c:choose>
 
-    <form id="form" action="signUp" method="post" onsubmit="return check('login', 'passwordUp','email','number')">
+    <form id="form" action="signUp" method="post" onsubmit="return check()">
         <div id="inputsUp" class="bgIn">
-            <input id="login" name="login" type="text" placeholder="login" autofocus>
-            <input id="email" name="email" type="email" placeholder="name@company.com">
-            <input id="passwordUp" name="password" type="password" placeholder="password">
-            <input id="number" name="number" type="number" placeholder="number">
+            <input id="login" name="login" type="text" placeholder="login" value="${login}" autofocus>
+            <input id="password" name="password" type="password" placeholder="password">
+            <input id="passwordConfirm" name="passwordConfirm" type="password" placeholder="confirm password">
+            <input id="email" name="email" type="email" placeholder="name@company.com" value="${email}">
         </div>
         <div id="actions">
             <input type="submit" id="submit" value="Sigh Up">

@@ -8,11 +8,11 @@
 <body>
 <div class="content">
 
-    <c:forEach var="article" items="${articles}">
+    <c:forEach var="article" items="${articles}" varStatus="index">
     <div class="news_block">
         <h1>${article.title}</h1>
 
-     <c:choose>
+        <c:choose>
             <c:when test="${article.media == null}">
                 <img src="/img/news/bbc_news_tech_144x81.jpg">
             </c:when>
@@ -25,7 +25,7 @@
 
         <p><a href=${article.link}>read</a></p>
 
-        <form id="form" method="post" action="archive">
+        <form id="form" method="post" action="addToArchive?index=${index.index}">
             <input id="submit" type="submit" value="Archive">
         </form>
 
