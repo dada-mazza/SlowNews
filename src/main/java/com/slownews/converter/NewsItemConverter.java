@@ -1,7 +1,10 @@
 package com.slownews.converter;
 
 import com.slownews.entity.ArchiveNewsEntity;
+import com.slownews.entity.UserEntity;
 import com.slownews.moxy.model.NewsItem;
+
+import java.util.HashSet;
 
 public class NewsItemConverter {
 
@@ -20,6 +23,7 @@ public class NewsItemConverter {
         archiveNewsEntity.setBody(newsItem.getDescription());
         archiveNewsEntity.setPubDate(newsItem.getPubDate());
         archiveNewsEntity.setRibbon("★★★★★");
+        archiveNewsEntity.setUserEntities(new HashSet<UserEntity>());
         return archiveNewsEntity;
     }
 }
