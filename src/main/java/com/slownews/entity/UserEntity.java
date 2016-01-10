@@ -1,12 +1,22 @@
 package com.slownews.entity;
 
+import com.slownews.controller.Role;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@NamedQuery(name = "UserEntity.getAll", query = "select users from UserEntity users")
+@NamedQueries({
+        @NamedQuery(name = "UserEntity.getAll",
+                query = "select users from UserEntity users"),
+        @NamedQuery(name = "UserEntity.getUserByLogin",
+                query = "select user from UserEntity user where user.login = :login"),
+        @NamedQuery(name = "UserEntity.getUserByEmail",
+                query = "select user from UserEntity user where user.email = :email")
+})
+
 public class UserEntity implements SlowNewsEntity {
 
     @Id
@@ -21,16 +31,14 @@ public class UserEntity implements SlowNewsEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "phoneNumber")
-    private String phoneNumber;
+    @Column(name = "role", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @Column(name = "role")
-    private String role;
-
-    @Column(name = "dateRegistration")
+    @Column(name = "dateRegistration", nullable = false)
     private Date dateRegistration;
 
     @Column
@@ -72,19 +80,11 @@ public class UserEntity implements SlowNewsEntity {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
@@ -111,7 +111,6 @@ public class UserEntity implements SlowNewsEntity {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
                 ", role='" + role + '\'' +
                 ", dateRegistration=" + dateRegistration +
                 ", archiveNewsEntities=" + archiveNewsEntities +

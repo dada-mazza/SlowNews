@@ -1,7 +1,6 @@
 package com.slownews.dao;
 
 import com.slownews.entity.SlowNewsEntity;
-import com.slownews.entity.UserEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -70,4 +69,5 @@ public class DAOImpl<E extends SlowNewsEntity> implements DAO<E> {
                 .createNamedQuery(entityClass.getSimpleName() + ".getAll", entityClass);
         return namedQuery.getResultList();
     }
+
 }

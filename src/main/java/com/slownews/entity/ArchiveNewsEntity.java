@@ -1,13 +1,24 @@
 package com.slownews.entity;
 
 import javax.persistence.*;
-import javax.persistence.metamodel.Type;
 import java.net.URL;
 import java.util.Set;
 
 @Entity
 @Table(name = "archive")
-@NamedQuery(name = "ArchiveNewsEntity.getAll", query = "select archiveNews from ArchiveNewsEntity archiveNews")
+
+@NamedQueries({
+        @NamedQuery(name = "ArchiveNewsEntity.getAll",
+                query = "select archiveNews from ArchiveNewsEntity archiveNews"),
+        @NamedQuery(name = "ArchiveNewsEntity.getArchiveNewsEntityByTitle",
+                query = "select archiveNews from ArchiveNewsEntity archiveNews" +
+                        " where archiveNews.title = :title"),
+        @NamedQuery(name = "ArchiveNewsEntity.getAllArchiveNewsesForUser",
+                query = "select archiveNews from ArchiveNewsEntity archiveNews" +
+                        " inner join archiveNews.userEntities user" +
+                        " where user.Id = :userId")
+})
+
 public class ArchiveNewsEntity implements SlowNewsEntity {
 
     @Id
@@ -16,7 +27,7 @@ public class ArchiveNewsEntity implements SlowNewsEntity {
     @Column(name = "id")
     private Long Id;
 
-    @Column(name = "title")
+    @Column(name = "title", unique = true, nullable = false)
     private String title;
 
     @Column(name = "firstParagraph")
