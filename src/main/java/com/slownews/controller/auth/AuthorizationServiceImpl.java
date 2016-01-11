@@ -20,7 +20,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 
         StringBuilder error = new StringBuilder();
 
-       addErrorMessage(login.length() < 4, error, "Логін має бути не менше 4 символів");
+        addErrorMessage(login.length() < 4, error, "Логін має бути не менше 4 символів");
 
         addErrorMessage(login.contains(" "), error, "Логін не має містити пробілів");
 

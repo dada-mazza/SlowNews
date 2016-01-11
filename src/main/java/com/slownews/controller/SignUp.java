@@ -3,6 +3,7 @@ package com.slownews.controller;
 import com.slownews.controller.auth.AuthorizationService;
 import com.slownews.controller.auth.AuthorizationServiceImpl;
 import com.slownews.controller.auth.exception.AuthorizationException;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,8 +29,8 @@ public class SignUp extends HttpServlet {
         logger.info("doPost");
 
         String login = request.getParameter("login");
-        String password = request.getParameter("password");
-        String passwordConfirm = request.getParameter("passwordConfirm");
+        String password = DigestUtils.md5Hex(request.getParameter("password"));
+        String passwordConfirm = DigestUtils.md5Hex(request.getParameter("passwordConfirm"));
         String email = request.getParameter("email");
 
         try {

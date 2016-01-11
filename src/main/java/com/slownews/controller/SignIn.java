@@ -3,6 +3,7 @@ package com.slownews.controller;
 import com.slownews.controller.auth.AuthenticationService;
 import com.slownews.controller.auth.AuthenticationServiceImpl;
 import com.slownews.controller.auth.exception.AuthenticationException;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +29,7 @@ public class SignIn extends HttpServlet {
 
         String login = request.getParameter("login");
         String password = request.getParameter("password");
+        password = (password == null || password.isEmpty()) ? null : DigestUtils.md5Hex(password);
 
         try {
             AuthenticationService service = new AuthenticationServiceImpl();

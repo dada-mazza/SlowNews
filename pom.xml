@@ -27,6 +27,8 @@
         <hibernate.version>5.0.3.Final</hibernate.version>
         <postgresql.version>9.4-1206-jdbc41</postgresql.version>
 
+        <commons-codec.version>1.10</commons-codec.version>
+
     </properties>
 
 
@@ -98,6 +100,13 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
+
 
     </dependencies>
 
