@@ -4,7 +4,6 @@ package com.slownews.moxy.model;
 import org.eclipse.persistence.oxm.annotations.XmlPath;
 
 import java.net.URL;
-import java.util.Date;
 import java.util.List;
 
 public class NewsItem {
@@ -16,7 +15,7 @@ public class NewsItem {
     private String description;
 
     @XmlPath("link/text()")
-    private String link;
+    private URL link;
 
     @XmlPath("pubDate/text()")
     private String pubDate;
@@ -40,11 +39,11 @@ public class NewsItem {
         this.description = description;
     }
 
-    public String getLink() {
+    public URL getLink() {
         return link;
     }
 
-    public void setLink(String link) {
+    public void setLink(URL link) {
         this.link = link;
     }
 

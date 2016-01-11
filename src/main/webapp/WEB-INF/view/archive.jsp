@@ -14,13 +14,19 @@
                 <div class="ribbon-green">${article.ribbon}</div>
             </div>
             <h1>${article.title}</h1>
-            <img src=${article.image}>
 
-            <p class="p-first">${article.firstParagraph}</p>
+            <c:choose>
+                <c:when test="${article.image == null}">
+                    <img src="/img/news/bbc_news_tech_144x81.jpg">
+                </c:when>
+                <c:otherwise>
+                    <img src=${article.image}>
+                </c:otherwise>
+            </c:choose>
 
-            <p>${article.body}</p>
-            <br/>
-            <a href="">...</a>
+            <p class="news_description">${article.description}</p>
+
+            <p><a href=${article.link}>read</a></p>
         </div>
     </c:forEach>
 

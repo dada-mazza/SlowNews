@@ -1,6 +1,6 @@
 package com.slownews.controller;
 
-import com.slownews.converter.NewsItemConverter;
+import com.slownews.converter.ArchiveNewsEntityConverter;
 import com.slownews.dao.ArchiveNewsDao;
 import com.slownews.dao.UserDAO;
 import com.slownews.entity.ArchiveNewsEntity;
@@ -27,32 +27,25 @@ public class AddToArchive extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ServletContext context = request.getSession().getServletContext();
-
         List<NewsItem> newsItemList = (List<NewsItem>) context.getAttribute("articles");
         Integer index = Integer.parseInt(request.getParameter("index"));
         NewsItem newsItem = newsItemList.get(index);
-        ArchiveNewsEntity news = new NewsItemConverter().covertNewsItemToArchiveNewsEntity(newsItem);
-
+        ArchiveNewsEntity news = new ArchiveNewsEntityConverter().covertNewsItemToArchiveNewsEntity(newsItem);
         ArchiveNewsDao archiveNewsDao = new ArchiveNewsDao();
-        ArchiveNewsEntity news2 = archiveNewsDao.getArchiveNewsEntityByTitle(news.getTitle());
-
-        UserDAO userDAO = new UserDAO();
+        ArchiveNewsEntity newsDB = archiveNewsDao.getArchiveNewsEntityByTitle(news.getTitle());
         String login = (String) request.getSession().getAttribute("user");
+        UserDAO userDAO = new UserDAO();
         UserEntity userEntity = userDAO.getUserByLogin(login);
-
-        if (news2 == null) {
+        if (newsDB == null) {
             news.getUserEntities().add(userEntity);
             archiveNewsDao.create(news);
         } else {
-            news2.getUserEntities().add(userEntity);
-            archiveNewsDao.update(news2);
+            newsDB.getUserEntities().add(userEntity);
+            archiveNewsDao.update(newsDB);
         }
-
         archiveNewsDao.close();
         userDAO.close();
-
         logger.info("service forward to " + "/");
-
         request.getRequestDispatcher("/").forward(request, response);
     }
 }

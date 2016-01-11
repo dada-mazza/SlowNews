@@ -30,27 +30,31 @@ public class ArchiveNewsEntity implements SlowNewsEntity {
     @Column(name = "title", unique = true, nullable = false)
     private String title;
 
-    @Column(name = "firstParagraph")
-    private String firstParagraph;
+    @Column(name = "description", unique = true, nullable = false)
+    private String description;
 
-    @Column(name = "body")
-    private String body;
-
-    @Column(name = "image")
-    private URL image;
+    @Column(name = "link")
+    private URL link;
 
     @Column(name = "pubDate")
     private String pubDate;
 
+    @Column(name = "image")
+    private URL image;
+
+    @Column(name = "body")
+    private String body;
+
     @Column(name = "ribbon")
     private String ribbon;
 
-    @ManyToMany (fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<UserEntity> userEntities;
 
     public ArchiveNewsEntity() {
     }
 
+    @Override
     public Long getId() {
         return Id;
     }
@@ -67,20 +71,28 @@ public class ArchiveNewsEntity implements SlowNewsEntity {
         this.title = title;
     }
 
-    public String getFirstParagraph() {
-        return firstParagraph;
+    public String getDescription() {
+        return description;
     }
 
-    public void setFirstParagraph(String firstParagraph) {
-        this.firstParagraph = firstParagraph;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getBody() {
-        return body;
+    public URL getLink() {
+        return link;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setLink(URL link) {
+        this.link = link;
+    }
+
+    public String getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(String pubDate) {
+        this.pubDate = pubDate;
     }
 
     public URL getImage() {
@@ -91,12 +103,12 @@ public class ArchiveNewsEntity implements SlowNewsEntity {
         this.image = image;
     }
 
-    public String getPubDate() {
-        return pubDate;
+    public String getBody() {
+        return body;
     }
 
-    public void setPubDate(String pubDate) {
-        this.pubDate = pubDate;
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public String getRibbon() {
@@ -113,5 +125,20 @@ public class ArchiveNewsEntity implements SlowNewsEntity {
 
     public void setUserEntities(Set<UserEntity> userEntities) {
         this.userEntities = userEntities;
+    }
+
+    @Override
+    public String toString() {
+        return "ArchiveNewsEntity{" +
+                "Id=" + Id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", link='" + link + '\'' +
+                ", pubDate='" + pubDate + '\'' +
+                ", image=" + image +
+                ", body='" + body + '\'' +
+                ", ribbon='" + ribbon + '\'' +
+                ", userEntities=" + userEntities +
+                '}';
     }
 }

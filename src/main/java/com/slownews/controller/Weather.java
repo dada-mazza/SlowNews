@@ -38,9 +38,6 @@ public class Weather extends HttpServlet {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode node = objectMapper.readValue(responseEntity, JsonNode.class);
 
-        System.out.println(node);
-
-
         if (node.get("cod").toString().equals("200")) {
 
             request.setAttribute("weatherCode", true);

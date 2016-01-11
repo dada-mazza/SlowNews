@@ -19,7 +19,7 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.flushMode" value="FLUSH_AUTO"/>
-            <property name="connection_pool_size" value="1"/>
+            <property name="connection_pool_size" value="10"/>
 
         </properties>
 
